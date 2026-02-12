@@ -32,17 +32,19 @@ return {
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(ev)
-				local opts = { buffer = ev.buf, remap = false }
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts)
-				vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, opts)
-				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-				vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts)
-				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+				local function opts(desc)
+					return { buffer = ev.buf, remap = false, desc = desc }
+				end
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Hover documentation"))
+				vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts("Workspace symbol search"))
+				vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, opts("Open diagnostic float"))
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts("Code action"))
+				vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts("Find references"))
+				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename symbol"))
+				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts("Prev diagnostic"))
+				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
+				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts("Signature help"))
 			end,
 		})
 	end,
