@@ -36,7 +36,4 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
--- Theme (must be after lazy.setup so plugins are loaded):
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
--- vim.cmd([[colorscheme everforest]])
+require("config.colorscheme")
