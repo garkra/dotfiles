@@ -2,7 +2,8 @@
 -- ║                     KEYBINDING INDEX                       ║
 -- ╠══════════════════════════════════════════════════════════════╣
 -- ║ GENERAL (remap.lua)                                        ║
--- ║   n  <leader>pv     Open file explorer                     ║
+-- ║   n  <leader>pv     Open file explorer (oil.nvim)           ║
+-- ║   n  -              Open parent directory (oil.nvim)        ║
 -- ║   i  jk             Exit insert mode                       ║
 -- ║   i  <C-c>          Exit insert mode                       ║
 -- ║   n  Q              Disabled                                ║
@@ -54,8 +55,6 @@
 -- ║   n  <leader>u      Toggle undotree                         ║
 -- ║   n  <leader>f      Format buffer                           ║
 -- ╚══════════════════════════════════════════════════════════════╝
-
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open file explorer" })
 
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
