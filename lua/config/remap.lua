@@ -51,9 +51,16 @@
 -- ║   n  <leader>gb     Git blame                               ║
 -- ║   n  <leader>lg     Open lazygit                            ║
 -- ╠══════════════════════════════════════════════════════════════╣
+-- ║ FLASH (plugins/flash.lua)                                  ║
+-- ║   nxo <leader>s     Flash jump                              ║
+-- ║   nxo f/F/t/T       Enhanced with flash labels              ║
+-- ║   n   /              Search with flash labels                ║
+-- ║   c   <C-s>          Toggle flash during search              ║
+-- ╠══════════════════════════════════════════════════════════════╣
 -- ║ OTHER                                                       ║
 -- ║   n  <leader>u      Toggle undotree                         ║
 -- ║   n  <leader>f      Format buffer                           ║
+-- ║   n  <C-?>          Show all keybindings                    ║
 -- ╚══════════════════════════════════════════════════════════════╝
 
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
