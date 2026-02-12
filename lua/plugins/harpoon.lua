@@ -12,24 +12,44 @@ return {
 			for _, item in ipairs(harpoon_files.items) do
 				table.insert(file_paths, item.value)
 			end
-			require("telescope.pickers").new({}, {
-				prompt_title = "Harpoon",
-				finder = require("telescope.finders").new_table({ results = file_paths }),
-				previewer = conf.file_previewer({}),
-				sorter = conf.generic_sorter({}),
-			}):find()
+			require("telescope.pickers")
+				.new({}, {
+					prompt_title = "Harpoon",
+					finder = require("telescope.finders").new_table({ results = file_paths }),
+					previewer = conf.file_previewer({}),
+					sorter = conf.generic_sorter({}),
+				})
+				:find()
 		end
 
-		vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-		vim.keymap.set("n", "<leader>d", function() harpoon:list():remove() end)
-		vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end)
+		vim.keymap.set("n", "<leader>a", function()
+			harpoon:list():add()
+		end)
+		vim.keymap.set("n", "<leader>d", function()
+			harpoon:list():remove()
+		end)
+		vim.keymap.set("n", "<C-e>", function()
+			toggle_telescope(harpoon:list())
+		end)
 
-		vim.keymap.set("n", "<C-j>", function() harpoon:list():select(1) end)
-		vim.keymap.set("n", "<C-k>", function() harpoon:list():select(2) end)
-		vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end)
-		vim.keymap.set("n", "<C-;>", function() harpoon:list():select(4) end)
+		vim.keymap.set("n", "<C-j>", function()
+			harpoon:list():select(1)
+		end)
+		vim.keymap.set("n", "<C-k>", function()
+			harpoon:list():select(2)
+		end)
+		vim.keymap.set("n", "<C-l>", function()
+			harpoon:list():select(3)
+		end)
+		vim.keymap.set("n", "<C-;>", function()
+			harpoon:list():select(4)
+		end)
 
-		vim.keymap.set("n", "<C-S-J>", function() harpoon:list():prev() end)
-		vim.keymap.set("n", "<C-S-K>", function() harpoon:list():next() end)
+		vim.keymap.set("n", "<C-S-J>", function()
+			harpoon:list():prev()
+		end)
+		vim.keymap.set("n", "<C-S-K>", function()
+			harpoon:list():next()
+		end)
 	end,
 }
