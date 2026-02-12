@@ -6,6 +6,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
   "conform.nvim": { "branch": "master", "commit": "c2526f1cde528a66e086ab1668e996d162c75f4f" },
   "everforest-nvim": { "branch": "main", "commit": "557bce922401e247a596583679bc181d4d688554" },
+  "gitsigns.nvim": { "branch": "main", "commit": "31217271a7314c343606acb4072a94a039a19fb5" },
   "gruvbox.nvim": { "branch": "main", "commit": "a472496e1a4465a2dd574389dcf6cdb29af9bf1b" },
   "harpoon": { "branch": "harpoon2", "commit": "87b1a3506211538f460786c23f98ec63ad9af4e5" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
