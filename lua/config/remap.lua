@@ -22,9 +22,12 @@
 -- ║   n   <leader>pf      Find files                              ║
 -- ║   n   <leader>gf      Find git files                          ║
 -- ║   n   <leader>pg      Live grep                               ║
+-- ║   n   <leader>fb      Browse open buffers                     ║
+-- ║   *   <C-x>           Open in horizontal split (in picker)    ║
+-- ║   *   <C-v>           Open in vertical split (in picker)      ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ HARPOON (plugins/harpoon.lua)                                 ║
--- ║   n   <leader>a       Add file to harpoon                     ║
+-- ║   n   <leader>ha      Add file to harpoon                     ║
 -- ║   n   <leader>hr      Remove file from harpoon                ║
 -- ║   n   <C-e>           Toggle harpoon menu (telescope)         ║
 -- ║   n   <C-j/k/l/;>     Select harpoon file 1/2/3/4             ║
@@ -60,6 +63,21 @@
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ COPILOT (plugins/copilot.lua)                                 ║
 -- ║   i   Tab             Accept copilot suggestion               ║
+-- ╠═══════════════════════════════════════════════════════════════╣
+-- ║ SPLITS (remap.lua)                                            ║
+-- ║   n   <leader>sv        Vertical split                        ║
+-- ║   n   <leader>sh        Horizontal split                      ║
+-- ║   n   <leader>sx        Close split                           ║
+-- ║   n   <leader>se        Equalize split sizes                  ║
+-- ║   n   <C-Up/Down>       Resize split vertically               ║
+-- ║   n   <C-Left/Right>    Resize split horizontally             ║
+-- ╠═══════════════════════════════════════════════════════════════╣
+-- ║ TABS (remap.lua)                                              ║
+-- ║   n   Shift+H           Prev tab                              ║
+-- ║   n   Shift+L           Next tab                              ║
+-- ║   n   <leader>tn        New tab                               ║
+-- ║   n   <leader>tc        Close tab                             ║
+-- ║   n   <leader>to        Close other tabs                      ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ OTHER                                                         ║
 -- ║   n   <leader>u       Toggle undotree                         ║
@@ -98,3 +116,18 @@ vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
 vim.keymap.set("n", "<leader>n", "<cmd>lnext<CR>zz", { desc = "Next location list" })
 vim.keymap.set("n", "<leader>p", "<cmd>lprev<CR>zz", { desc = "Prev location list" })
+
+vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "Vertical split" })
+vim.keymap.set("n", "<leader>sh", "<cmd>split<CR>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equalize split sizes" })
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Resize split up" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Resize split down" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Resize split left" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Resize split right" })
+
+vim.keymap.set("n", "<S-h>", "<cmd>tabprevious<CR>", { desc = "Prev tab" })
+vim.keymap.set("n", "<S-l>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
+vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>", { desc = "Close other tabs" })
