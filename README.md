@@ -21,6 +21,15 @@ Follow the on-screen instructions. After installation, make sure to run the comm
 brew install neovim git ripgrep fd fzf make lazygit
 ```
 
+## Step 3: Configure Git
+
+Set your name and email so Git knows who you are:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
 | Tool | What it's for |
 |------|---------------|
 | `neovim` | The editor itself (0.10+ required) |
@@ -31,7 +40,7 @@ brew install neovim git ripgrep fd fzf make lazygit
 | `make` | Building telescope-fzf-native.nvim |
 | `lazygit` | Git TUI (opened with `<Space>lg`) |
 
-## Step 3: Install a Nerd Font
+## Step 4: Install a Nerd Font
 
 A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status line and file explorer.
 
@@ -41,7 +50,7 @@ brew install --cask font-fira-code-nerd-font
 
 After installing, set your terminal emulator's font to **FiraCode Nerd Font**.
 
-## Step 4: Install Language Toolchains (as needed)
+## Step 5: Install Language Toolchains (as needed)
 
 Install the languages you work with. The config has LSP support for all of these:
 
@@ -61,7 +70,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 You only need to install the ones you'll actually use.
 
-## Step 5: Clone the Config
+## Step 6: Clone the Config
 
 Back up any existing Neovim config first:
 
@@ -78,7 +87,7 @@ Then clone:
 git clone https://github.com/garkra/dotfiles.git ~/.config/nvim
 ```
 
-## Step 6: Create the Undo Directory
+## Step 7: Create the Undo Directory
 
 The config uses persistent undo. Create the directory it expects:
 
@@ -86,7 +95,7 @@ The config uses persistent undo. Create the directory it expects:
 mkdir -p ~/.vim/undodir
 ```
 
-## Step 7: Launch Neovim
+## Step 8: Launch Neovim
 
 ```bash
 nvim
@@ -99,7 +108,7 @@ On first launch:
 
 Wait for everything to finish installing (you'll see progress in the status area), then restart Neovim.
 
-## Step 8: Set Up GitHub Copilot
+## Step 9: Set Up GitHub Copilot
 
 On first use, Copilot will prompt you to authenticate:
 
