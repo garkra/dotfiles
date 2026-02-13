@@ -30,3 +30,11 @@ vim.opt.updatetime = 50
 -- vim.opt.clipboard = "unnamedplus"
 
 vim.opt.mouse = "a"
+
+-- When running inside a Neovim terminal (e.g. lazygit), use nvr to open
+-- files in the existing Neovim instance instead of nesting a new one
+if vim.fn.has("nvim") == 1 and vim.fn.executable("nvr") == 1 then
+	vim.env.EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+	vim.env.VISUAL = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+	vim.env.GIT_EDITOR = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+end

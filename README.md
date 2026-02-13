@@ -49,7 +49,20 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-## Step 5: Install a Nerd Font
+## Step 5: Set Default Editor
+
+Set Neovim as your default editor and install `neovim-remote` so lazygit can open files in your existing Neovim instance:
+
+```bash
+echo 'export EDITOR="nvim"' >> ~/.zshrc
+echo 'export VISUAL="nvim"' >> ~/.zshrc
+source ~/.zshrc
+pip3 install neovim-remote
+```
+
+The Neovim config automatically detects `nvr` and uses it when running inside a Neovim terminal (like lazygit), so files open in a split in your current editor instead of nesting a new one.
+
+## Step 6: Install a Nerd Font
 
 A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status line and file explorer.
 
@@ -57,9 +70,9 @@ A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status li
 brew install --cask font-fira-code-nerd-font
 ```
 
-Kitty is already configured to use this font (see Step 8).
+Kitty is already configured to use this font (see Step 9).
 
-## Step 6: Install Language Toolchains (as needed)
+## Step 7: Install Language Toolchains (as needed)
 
 Install the languages you work with. The config has LSP support for all of these:
 
@@ -81,7 +94,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 You only need to install the ones you'll actually use.
 
-## Step 7: Clone the Config
+## Step 8: Clone the Config
 
 Back up any existing Neovim config first:
 
@@ -98,7 +111,7 @@ Then clone:
 git clone https://github.com/garkra/dotfiles.git ~/.config/nvim
 ```
 
-## Step 8: Link the Kitty Config
+## Step 9: Link the Kitty Config
 
 The repo includes a Kitty config. Symlink it so Kitty picks it up:
 
@@ -107,7 +120,7 @@ mkdir -p ~/.config/kitty
 ln -sf ~/.config/nvim/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ```
 
-## Step 9: Create the Undo Directory
+## Step 10: Create the Undo Directory
 
 The config uses persistent undo. Create the directory it expects:
 
@@ -115,7 +128,7 @@ The config uses persistent undo. Create the directory it expects:
 mkdir -p ~/.vim/undodir
 ```
 
-## Step 10: Launch Neovim
+## Step 11: Launch Neovim
 
 ```bash
 nvim
@@ -128,7 +141,7 @@ On first launch:
 
 Wait for everything to finish installing (you'll see progress in the status area), then restart Neovim.
 
-## Step 11: Set Up GitHub Copilot
+## Step 12: Set Up GitHub Copilot
 
 On first use, Copilot will prompt you to authenticate:
 
