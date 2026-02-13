@@ -3,7 +3,6 @@
 ## Prerequisites
 
 - macOS
-- A terminal emulator (iTerm2, Kitty, Alacritty, WezTerm, etc.)
 
 ## Step 1: Install Homebrew
 
@@ -25,14 +24,16 @@ xcode-select --install
 
 A dialog will pop up — click **Install** and wait for it to finish.
 
-## Step 3: Install Neovim and Dependencies
+## Step 3: Install Kitty, Neovim, and Dependencies
 
 ```bash
+brew install --cask kitty
 brew install neovim ripgrep fd fzf lazygit
 ```
 
 | Tool | What it's for |
 |------|---------------|
+| `kitty` | Terminal emulator |
 | `neovim` | The editor itself (0.10+ required) |
 | `ripgrep` | Live grep search (Telescope) |
 | `fd` | File finding (Telescope) |
@@ -56,7 +57,7 @@ A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status li
 brew install --cask font-fira-code-nerd-font
 ```
 
-After installing, set your terminal emulator's font to **FiraCode Nerd Font**.
+Kitty is already configured to use this font (see Step 8).
 
 ## Step 6: Install Language Toolchains (as needed)
 
@@ -97,7 +98,16 @@ Then clone:
 git clone https://github.com/garkra/dotfiles.git ~/.config/nvim
 ```
 
-## Step 8: Create the Undo Directory
+## Step 8: Link the Kitty Config
+
+The repo includes a Kitty config. Symlink it so Kitty picks it up:
+
+```bash
+mkdir -p ~/.config/kitty
+ln -sf ~/.config/nvim/kitty/kitty.conf ~/.config/kitty/kitty.conf
+```
+
+## Step 9: Create the Undo Directory
 
 The config uses persistent undo. Create the directory it expects:
 
@@ -105,7 +115,7 @@ The config uses persistent undo. Create the directory it expects:
 mkdir -p ~/.vim/undodir
 ```
 
-## Step 9: Launch Neovim
+## Step 10: Launch Neovim
 
 ```bash
 nvim
@@ -118,7 +128,7 @@ On first launch:
 
 Wait for everything to finish installing (you'll see progress in the status area), then restart Neovim.
 
-## Step 10: Set Up GitHub Copilot
+## Step 11: Set Up GitHub Copilot
 
 On first use, Copilot will prompt you to authenticate:
 
