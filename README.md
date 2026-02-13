@@ -15,13 +15,31 @@ Open Terminal and run:
 
 Follow the on-screen instructions. After installation, make sure to run the commands it tells you to add Homebrew to your PATH (it will print them at the end).
 
-## Step 2: Install Neovim and Dependencies
+## Step 2: Install Xcode Command Line Tools
+
+This provides `git`, `clang` (C/C++ compiler), `make`, and other essentials:
 
 ```bash
-brew install neovim git ripgrep fd fzf make lazygit
+xcode-select --install
 ```
 
-## Step 3: Configure Git
+A dialog will pop up — click **Install** and wait for it to finish.
+
+## Step 3: Install Neovim and Dependencies
+
+```bash
+brew install neovim ripgrep fd fzf lazygit
+```
+
+| Tool | What it's for |
+|------|---------------|
+| `neovim` | The editor itself (0.10+ required) |
+| `ripgrep` | Live grep search (Telescope) |
+| `fd` | File finding (Telescope) |
+| `fzf` | Fuzzy matching (telescope-fzf-native) |
+| `lazygit` | Git TUI (opened with `<Space>lg`) |
+
+## Step 4: Configure Git
 
 Set your name and email so Git knows who you are:
 
@@ -30,17 +48,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-| Tool | What it's for |
-|------|---------------|
-| `neovim` | The editor itself (0.10+ required) |
-| `git` | Plugin manager bootstrap + git integration |
-| `ripgrep` | Live grep search (Telescope) |
-| `fd` | File finding (Telescope) |
-| `fzf` | Fuzzy matching (telescope-fzf-native) |
-| `make` | Building telescope-fzf-native.nvim |
-| `lazygit` | Git TUI (opened with `<Space>lg`) |
-
-## Step 4: Install a Nerd Font
+## Step 5: Install a Nerd Font
 
 A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status line and file explorer.
 
@@ -50,7 +58,7 @@ brew install --cask font-fira-code-nerd-font
 
 After installing, set your terminal emulator's font to **FiraCode Nerd Font**.
 
-## Step 5: Install Language Toolchains (as needed)
+## Step 6: Install Language Toolchains (as needed)
 
 Install the languages you work with. The config has LSP support for all of these:
 
@@ -68,9 +76,11 @@ brew install python
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
+**C/C++** is already covered — the Xcode Command Line Tools from Step 2 provide `clang` and `clang++`.
+
 You only need to install the ones you'll actually use.
 
-## Step 6: Clone the Config
+## Step 7: Clone the Config
 
 Back up any existing Neovim config first:
 
@@ -87,7 +97,7 @@ Then clone:
 git clone https://github.com/garkra/dotfiles.git ~/.config/nvim
 ```
 
-## Step 7: Create the Undo Directory
+## Step 8: Create the Undo Directory
 
 The config uses persistent undo. Create the directory it expects:
 
@@ -95,7 +105,7 @@ The config uses persistent undo. Create the directory it expects:
 mkdir -p ~/.vim/undodir
 ```
 
-## Step 8: Launch Neovim
+## Step 9: Launch Neovim
 
 ```bash
 nvim
@@ -103,12 +113,12 @@ nvim
 
 On first launch:
 1. **lazy.nvim** will automatically bootstrap and install all plugins
-2. **Mason** will automatically install these LSP servers: `lua_ls`, `ts_ls`, `gopls`, `pyright`, `rust_analyzer`, `eslint`
-3. **Treesitter** will automatically install parsers for: Lua, TypeScript, TSX, JavaScript, Go, Python, Rust, vimdoc
+2. **Mason** will automatically install these LSP servers: `lua_ls`, `ts_ls`, `gopls`, `pyright`, `rust_analyzer`, `eslint`, `clangd`
+3. **Treesitter** will automatically install parsers for: Lua, TypeScript, TSX, JavaScript, Go, Python, Rust, C, C++, vimdoc
 
 Wait for everything to finish installing (you'll see progress in the status area), then restart Neovim.
 
-## Step 9: Set Up GitHub Copilot
+## Step 10: Set Up GitHub Copilot
 
 On first use, Copilot will prompt you to authenticate:
 

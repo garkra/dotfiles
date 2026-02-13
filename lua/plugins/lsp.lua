@@ -14,6 +14,7 @@ return {
 				"pyright",
 				"rust_analyzer",
 				"eslint",
+				"clangd",
 			},
 		})
 
@@ -25,7 +26,7 @@ return {
 			},
 		})
 
-		vim.lsp.enable({ "lua_ls", "ts_ls", "gopls", "pyright", "rust_analyzer", "eslint" })
+		vim.lsp.enable({ "lua_ls", "ts_ls", "gopls", "pyright", "rust_analyzer", "eslint", "clangd" })
 
 		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
