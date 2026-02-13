@@ -9,7 +9,7 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
+		{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash jump" },
 		{ "<C-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle flash search" },
 	},
 }

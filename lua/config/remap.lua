@@ -56,7 +56,7 @@
 -- ║   n   <leader>lg      Open lazygit                            ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ FLASH (plugins/flash.lua)                                     ║
--- ║   nxo <leader>s       Flash jump                              ║
+-- ║   nxo s               Flash jump                              ║
 -- ║   nxo f/F/t/T         Enhanced with flash labels              ║
 -- ║   n   /               Search with flash labels                ║
 -- ║   c   <C-s>           Toggle flash during search              ║
