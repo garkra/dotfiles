@@ -249,7 +249,6 @@ Leader key is `Space`.
 | [undotree](https://github.com/mbbill/undotree) | Undo history |
 | [which-key.nvim](https://github.com/folke/which-key.nvim) | Keybinding hints |
 | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | Status line |
-| [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Tab/buffer line |
 | [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim) | Colorscheme |
 | [everforest-nvim](https://github.com/neanias/everforest-nvim) | Colorscheme (alt) |
 
