@@ -2,9 +2,13 @@
 
 ## Prerequisites
 
-- macOS
+- macOS or Ubuntu/Debian Linux
 
-## Step 1: Install Homebrew
+---
+
+## macOS Setup
+
+### Step 1: Install Homebrew
 
 Open Terminal and run:
 
@@ -14,7 +18,7 @@ Open Terminal and run:
 
 Follow the on-screen instructions. After installation, make sure to run the commands it tells you to add Homebrew to your PATH (it will print them at the end).
 
-## Step 2: Install Xcode Command Line Tools
+### Step 2: Install Xcode Command Line Tools
 
 This provides `git`, `clang` (C/C++ compiler), `make`, and other essentials:
 
@@ -24,7 +28,7 @@ xcode-select --install
 
 A dialog will pop up — click **Install** and wait for it to finish.
 
-## Step 3: Install Kitty, Neovim, and Dependencies
+### Step 3: Install Kitty, Neovim, and Dependencies
 
 ```bash
 brew install --cask kitty
@@ -34,13 +38,13 @@ brew install neovim ripgrep fd fzf lazygit
 | Tool | What it's for |
 |------|---------------|
 | `kitty` | Terminal emulator |
-| `neovim` | The editor itself (0.10+ required) |
+| `neovim` | The editor itself (0.11.3+ required) |
 | `ripgrep` | Live grep search (Telescope) |
 | `fd` | File finding (Telescope) |
 | `fzf` | Fuzzy matching (telescope-fzf-native) |
 | `lazygit` | Git TUI (opened with `<Space>lg`) |
 
-## Step 4: Configure Git
+### Step 4: Configure Git
 
 Set your name and email so Git knows who you are:
 
@@ -49,7 +53,7 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-## Step 5: Set Default Editor
+### Step 5: Set Default Editor
 
 Set Neovim as your default editor and install `neovim-remote` so lazygit can open files in your existing Neovim instance:
 
@@ -62,7 +66,7 @@ pip3 install neovim-remote
 
 The Neovim config automatically detects `nvr` and uses it when running inside a Neovim terminal (like lazygit), so files open in a split in your current editor instead of nesting a new one.
 
-## Step 6: Install a Nerd Font
+### Step 6: Install a Nerd Font
 
 A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status line and file explorer.
 
@@ -72,7 +76,7 @@ brew install --cask font-fira-code-nerd-font
 
 Kitty is already configured to use this font (see Step 9).
 
-## Step 7: Install Language Toolchains (as needed)
+### Step 7: Install Language Toolchains (as needed)
 
 Install the languages you work with. The config has LSP support for all of these:
 
@@ -94,7 +98,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 You only need to install the ones you'll actually use.
 
-## Step 8: Clone the Config
+### Step 8: Clone the Config
 
 Back up any existing Neovim config first:
 
@@ -111,7 +115,7 @@ Then clone:
 git clone https://github.com/garkra/dotfiles.git ~/.config/nvim
 ```
 
-## Step 9: Link the Kitty Config
+### Step 9: Link the Kitty Config
 
 The repo includes a Kitty config. Symlink it so Kitty picks it up:
 
@@ -120,7 +124,7 @@ mkdir -p ~/.config/kitty
 ln -sf ~/.config/nvim/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ```
 
-## Step 10: Create the Undo Directory
+### Step 10: Create the Undo Directory
 
 The config uses persistent undo. Create the directory it expects:
 
@@ -128,7 +132,7 @@ The config uses persistent undo. Create the directory it expects:
 mkdir -p ~/.vim/undodir
 ```
 
-## Step 11: Launch Neovim
+### Step 11: Launch Neovim
 
 ```bash
 nvim
@@ -141,7 +145,7 @@ On first launch:
 
 Wait for everything to finish installing (you'll see progress in the status area), then restart Neovim.
 
-## Step 12: Set Up GitHub Copilot
+### Step 12: Set Up GitHub Copilot
 
 On first use, Copilot will prompt you to authenticate:
 
@@ -150,6 +154,48 @@ On first use, Copilot will prompt you to authenticate:
 ```
 
 Follow the instructions to link your GitHub account. Requires a [GitHub Copilot subscription](https://github.com/features/copilot).
+
+---
+
+## Linux Setup (Ubuntu/Debian)
+
+Run the setup script from the repo:
+
+```bash
+~/.config/nvim/scripts/setup-linux.sh
+```
+
+Or if you haven't cloned yet, clone first then run it:
+
+```bash
+git clone https://github.com/garkra/dotfiles.git ~/.config/nvim
+~/.config/nvim/scripts/setup-linux.sh
+```
+
+The script installs all dependencies (Neovim, Kitty, ripgrep, fd, fzf, lazygit, Nerd Font, neovim-remote), configures your shell, and symlinks the Kitty config. After it finishes, open Kitty and run `nvim` — plugins will auto-install on first launch.
+
+For language toolchains, install whichever you need:
+
+```bash
+# Node.js (for TypeScript/JavaScript/ESLint)
+sudo apt install nodejs npm
+
+# Go
+sudo apt install golang-go
+
+# Python (usually pre-installed)
+sudo apt install python3 python3-pip
+
+# Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# C/C++ (usually pre-installed, if not:)
+sudo apt install build-essential
+```
+
+Then run `:Copilot setup` inside Neovim to authenticate GitHub Copilot.
+
+---
 
 ## Keybindings
 
@@ -293,7 +339,7 @@ Leader key is `Space`.
 ## Troubleshooting
 
 - **Icons look broken**: Make sure your terminal is using a Nerd Font
-- **Telescope grep not working**: Make sure `ripgrep` is installed (`brew install ripgrep`)
+- **Telescope grep not working**: Make sure `ripgrep` is installed (`brew install ripgrep` / `sudo apt install ripgrep`)
 - **LSP not starting**: Check `:Mason` to see if the server is installed. Make sure the language toolchain is installed (e.g., `node` for TypeScript)
 - **Copilot not working**: Run `:Copilot setup` and authenticate with GitHub
 - **Plugins not installing**: Run `:Lazy sync` to force a plugin sync
