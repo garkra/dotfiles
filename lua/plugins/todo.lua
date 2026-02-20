@@ -78,6 +78,23 @@ local function toggle_todo()
 		vim.api.nvim_set_current_line(new)
 	end, { buffer = todo_buf, desc = "Uncheck TODO" })
 
+	-- Add new todo item below the current section's last list item
+	vim.keymap.set("n", "<leader>a", function()
+		local cursor = vim.api.nvim_win_get_cursor(todo_win)
+		local row = cursor[1]
+		local lines = vim.api.nvim_buf_get_lines(todo_buf, 0, -1, false)
+		-- Find the last list item before the next heading, divider, or end of file
+		local insert_row = row
+		for i = row + 1, #lines do
+			local l = lines[i]
+			if l:match("^#") or l:match("^%-%-%-") then break end
+			if l:match("^%s*%-") then insert_row = i end
+		end
+		vim.api.nvim_buf_set_lines(todo_buf, insert_row, insert_row, false, { "- [ ] " })
+		vim.api.nvim_win_set_cursor(todo_win, { insert_row + 1, 6 })
+		vim.cmd("startinsert!")
+	end, { buffer = todo_buf, desc = "Add TODO item" })
+
 end
 
 vim.keymap.set("n", "<leader>td", toggle_todo, { desc = "Toggle TODO" })

@@ -86,6 +86,7 @@
 -- ║   n   <leader>x       Mark done [x] with date                 ║
 -- ║   n   <leader>~       Mark in-progress [~]                    ║
 -- ║   n   <leader><BS>    Uncheck [ ]                             ║
+-- ║   n   <leader>a       Add new TODO item to section             ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ OTHER                                                         ║
 -- ║   n   <leader>u       Toggle undotree                         ║
