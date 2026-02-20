@@ -3,9 +3,11 @@ return {
 	ft = { "markdown" },
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 	opts = {
+		render_modes = true,
+		anti_conceal = { enabled = true },
 		heading = {
-			width = "block",
-			border = true,
+			border = false,
+			backgrounds = {},
 		},
 		bullet = {
 			icons = { "●", "○", "◆", "◇" },
