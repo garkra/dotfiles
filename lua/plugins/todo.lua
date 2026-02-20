@@ -47,18 +47,17 @@ local function toggle_todo()
 	-- q saves and closes from normal mode
 	vim.keymap.set("n", "q", close_todo, { buffer = todo_buf, desc = "Close TODO" })
 
-	-- Mark done: [x] with date
+	local datetime_pattern = "%d%d%d%d%-%d%d%-%d%d %d%d:%d%d "
+
+	-- Mark done: [x] with date and time
 	vim.keymap.set("n", "<leader>x", function()
 		local line = vim.api.nvim_get_current_line()
-		local date = os.date("%Y-%m-%d")
-		-- Replace [ ] or [~] with [x] and insert date after the checkbox
-		local new = line:gsub("%[([ ~])%]", function()
-			return "[x]"
-		end)
-		-- Remove existing date if present, then add current date
-		new = new:gsub("%[x%]%s*%d%d%d%d%-%d%d%-%d%d%s*", "[x] " .. date .. " ")
+		local stamp = os.date("%Y-%m-%d %H:%M")
+		local new = line:gsub("%[([ ~])%]", "[x]")
+		-- Remove existing timestamp if present, then add current one
+		new = new:gsub("%[x%]%s*" .. datetime_pattern, "[x] " .. stamp .. " ")
 		if not new:find("%[x%]%s*%d") then
-			new = new:gsub("%[x%]%s*", "[x] " .. date .. " ")
+			new = new:gsub("%[x%]%s*", "[x] " .. stamp .. " ")
 		end
 		vim.api.nvim_set_current_line(new)
 	end, { buffer = todo_buf, desc = "Mark TODO done" })
@@ -67,8 +66,7 @@ local function toggle_todo()
 	vim.keymap.set("n", "<leader>~", function()
 		local line = vim.api.nvim_get_current_line()
 		local new = line:gsub("%[([x ])%]", "[~]")
-		-- Remove date if present
-		new = new:gsub("%[~%]%s*%d%d%d%d%-%d%d%-%d%d%s*", "[~] ")
+		new = new:gsub("%[~%]%s*" .. datetime_pattern, "[~] ")
 		vim.api.nvim_set_current_line(new)
 	end, { buffer = todo_buf, desc = "Mark TODO in-progress" })
 
@@ -76,8 +74,7 @@ local function toggle_todo()
 	vim.keymap.set("n", "<leader><BS>", function()
 		local line = vim.api.nvim_get_current_line()
 		local new = line:gsub("%[([x~])%]", "[ ]")
-		-- Remove date if present
-		new = new:gsub("%[ %]%s*%d%d%d%d%-%d%d%-%d%d%s*", "[ ] ")
+		new = new:gsub("%[ %]%s*" .. datetime_pattern, "[ ] ")
 		vim.api.nvim_set_current_line(new)
 	end, { buffer = todo_buf, desc = "Uncheck TODO" })
 
