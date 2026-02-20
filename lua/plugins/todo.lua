@@ -20,7 +20,14 @@ local function toggle_todo()
 
 	-- Create the file if it doesn't exist
 	if vim.fn.filereadable(todo_file) == 0 then
-		vim.fn.writefile({ "# TODO", "" }, todo_file)
+		vim.fn.writefile({
+			"# TODO:",
+			"",
+			"---",
+			"",
+			"# DONE:",
+			"",
+		}, todo_file)
 	end
 
 	-- Create or reuse the buffer
@@ -49,17 +56,67 @@ local function toggle_todo()
 
 	local datetime_pattern = "%d%d%d%d%-%d%d%-%d%d %d%d:%d%d "
 
-	-- Mark done: [x] with date and time
+	-- Mark done: [x] with date and time, move to DONE section
 	vim.keymap.set("n", "<leader>x", function()
-		local line = vim.api.nvim_get_current_line()
+		local row = vim.api.nvim_win_get_cursor(todo_win)[1]
+		local lines = vim.api.nvim_buf_get_lines(todo_buf, 0, -1, false)
+		local line = lines[row]
 		local stamp = os.date("%Y-%m-%d %H:%M")
+
+		-- Mark as done with timestamp
 		local new = line:gsub("%[([ ~])%]", "[x]")
-		-- Remove existing timestamp if present, then add current one
 		new = new:gsub("%[x%]%s*" .. datetime_pattern, "[x] " .. stamp .. " ")
 		if not new:find("%[x%]%s*%d") then
 			new = new:gsub("%[x%]%s*", "[x] " .. stamp .. " ")
 		end
-		vim.api.nvim_set_current_line(new)
+
+		-- Collect subitems (indented lines below current)
+		local item_lines = { new }
+		local base_indent = (line:match("^(%s*)") or ""):len()
+		local last_row = row
+		for i = row + 1, #lines do
+			local indent = (lines[i]:match("^(%s*)") or ""):len()
+			if indent > base_indent and lines[i]:match("%S") then
+				table.insert(item_lines, lines[i])
+				last_row = i
+			else
+				break
+			end
+		end
+
+		-- Find the DONE heading
+		local done_row = nil
+		for i = 1, #lines do
+			if lines[i]:match("^# DONE:") then
+				done_row = i
+				break
+			end
+		end
+
+		if not done_row then
+			-- No DONE section, just mark in place
+			vim.api.nvim_set_current_line(new)
+			return
+		end
+
+		-- Find first list item after DONE heading (insert before it)
+		local insert_row = done_row + 1
+		-- Skip blank lines after heading
+		while insert_row <= #lines and lines[insert_row]:match("^%s*$") do
+			insert_row = insert_row + 1
+		end
+
+		-- Remove original lines first, then insert at DONE
+		vim.api.nvim_buf_set_lines(todo_buf, row - 1, last_row, false, {})
+
+		-- Adjust insert position if we removed lines above it
+		local removed = last_row - row + 1
+		if row < insert_row then
+			insert_row = insert_row - removed
+		end
+
+		vim.api.nvim_buf_set_lines(todo_buf, insert_row - 1, insert_row - 1, false, item_lines)
+		vim.api.nvim_win_set_cursor(todo_win, { math.min(row, vim.api.nvim_buf_line_count(todo_buf)), 0 })
 	end, { buffer = todo_buf, desc = "Mark TODO done" })
 
 	-- Mark in-progress: [~]
