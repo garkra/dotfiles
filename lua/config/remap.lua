@@ -80,6 +80,13 @@
 -- ║   n   <leader>tc        Close tab                             ║
 -- ║   n   <leader>to        Close other tabs                      ║
 -- ╠═══════════════════════════════════════════════════════════════╣
+-- ║ TODO (plugins/todo.lua) — buffer-local to TODO float            ║
+-- ║   n   <leader>td      Toggle floating TODO                    ║
+-- ║   n   q               Close TODO (saves first)                ║
+-- ║   n   <leader>x       Mark done [x] with date                 ║
+-- ║   n   <leader>~       Mark in-progress [~]                    ║
+-- ║   n   <leader><BS>    Uncheck [ ]                             ║
+-- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ OTHER                                                         ║
 -- ║   n   <leader>u       Toggle undotree                         ║
 -- ║   n   <leader>f       Format buffer                           ║
