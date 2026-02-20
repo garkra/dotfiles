@@ -95,8 +95,14 @@
 
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "J", function()
+	local reindent = vim.bo.filetype ~= "markdown" and "=" or ""
+	return ":m '>+1<CR>gv" .. reindent .. "gv"
+end, { expr = true, desc = "Move selection down" })
+vim.keymap.set("v", "K", function()
+	local reindent = vim.bo.filetype ~= "markdown" and "=" or ""
+	return ":m '<-2<CR>gv" .. reindent .. "gv"
+end, { expr = true, desc = "Move selection up" })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join lines (centered)" })
 
