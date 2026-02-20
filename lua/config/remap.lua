@@ -15,6 +15,7 @@
 -- ║   n   <leader>y/Y     Yank to system clipboard                ║
 -- ║   n   <leader>yf      Copy current buffer filepath            ║
 -- ║   nv  <leader>d       Delete to void register                 ║
+-- ║   n   <leader>dq      Diagnostics to quickfix                 ║
 -- ║   n   <C-n>/<C-p>     Quickfix next/prev                      ║
 -- ║   n   <leader>n/p     Location list next/prev                 ║
 -- ╠═══════════════════════════════════════════════════════════════╣
@@ -112,6 +113,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Exit insert mode" })
 
 vim.keymap.set("n", "Q", "<nop>", { desc = "Disabled" })
 
+vim.keymap.set("n", "<leader>dq", vim.diagnostic.setqflist, { desc = "Diagnostics to quickfix" })
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprev<CR>zz", { desc = "Prev quickfix" })
 vim.keymap.set("n", "<leader>n", "<cmd>lnext<CR>zz", { desc = "Next location list" })

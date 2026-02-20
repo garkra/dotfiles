@@ -202,6 +202,7 @@ Leader key is `Space`.
 | `Space rr` | Normal | Find references |
 | `Space rn` | Normal | Rename symbol |
 | `Space dd` | Normal | Open diagnostic float |
+| `Space dq` | Normal | Send diagnostics to quickfix |
 | `[d` / `]d` | Normal | Prev / next diagnostic |
 | `Ctrl-h` | Insert | Signature help |
 
@@ -250,6 +251,20 @@ Leader key is `Space`.
 | `Space tn` | Normal | New tab |
 | `Space tc` | Normal | Close tab |
 | `Space to` | Normal | Close other tabs |
+
+### Kitty Terminal
+
+| Key | Action |
+|-----|--------|
+| `Cmd+D` | Vertical split |
+| `Cmd+Shift+D` | Horizontal split |
+| `Cmd+W` | Close split |
+| `Cmd+Shift+H/L/K/J` | Navigate splits (left/right/up/down) |
+| `Cmd+Alt+H/L/K/J` | Move split (left/right/up/down) |
+| `Cmd+Shift+Arrow` | Resize split |
+| `Cmd+Shift+]` / `[` | Next / prev tab |
+| `Cmd+1-9` | Go to tab by number |
+| `Cmd+Shift+R` | Rename tab |
 
 ## Plugin List
 
