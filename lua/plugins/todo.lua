@@ -21,6 +21,14 @@ local function toggle_todo()
 	-- Create the file if it doesn't exist
 	if vim.fn.filereadable(todo_file) == 0 then
 		vim.fn.writefile({
+			"<!-- Keybindings (only active in this float): -->",
+			"<!-- <leader>a   Add new item to current section -->",
+			"<!-- <leader>s   Start item [~]                   -->",
+			"<!-- <leader>d   Mark item as done [x] + move to DONE -->",
+			"<!-- <leader><BS> Uncheck item [ ]               -->",
+			"<!-- q           Save and close                  -->",
+			"<!-- V then J/K  Reorder items by priority       -->",
+			"",
 			"# TODO:",
 			"",
 			"---",
@@ -57,7 +65,7 @@ local function toggle_todo()
 	local datetime_pattern = "%d%d%d%d%-%d%d%-%d%d %d%d:%d%d "
 
 	-- Mark done: [x] with date and time, move to DONE section
-	vim.keymap.set("n", "<leader>x", function()
+	vim.keymap.set("n", "<leader>d", function()
 		local row = vim.api.nvim_win_get_cursor(todo_win)[1]
 		local lines = vim.api.nvim_buf_get_lines(todo_buf, 0, -1, false)
 		local line = lines[row]
@@ -119,13 +127,13 @@ local function toggle_todo()
 		vim.api.nvim_win_set_cursor(todo_win, { math.min(row, vim.api.nvim_buf_line_count(todo_buf)), 0 })
 	end, { buffer = todo_buf, desc = "Mark TODO done" })
 
-	-- Mark in-progress: [~]
-	vim.keymap.set("n", "<leader>~", function()
+	-- Start: mark in-progress [~]
+	vim.keymap.set("n", "<leader>s", function()
 		local line = vim.api.nvim_get_current_line()
 		local new = line:gsub("%[([x ])%]", "[~]")
 		new = new:gsub("%[~%]%s*" .. datetime_pattern, "[~] ")
 		vim.api.nvim_set_current_line(new)
-	end, { buffer = todo_buf, desc = "Mark TODO in-progress" })
+	end, { buffer = todo_buf, desc = "Start TODO item" })
 
 	-- Uncheck: [ ]
 	vim.keymap.set("n", "<leader><BS>", function()

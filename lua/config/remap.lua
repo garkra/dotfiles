@@ -83,10 +83,10 @@
 -- ║ TODO (plugins/todo.lua) — buffer-local to TODO float            ║
 -- ║   n   <leader>td      Toggle floating TODO                    ║
 -- ║   n   q               Close TODO (saves first)                ║
--- ║   n   <leader>x       Mark done [x] with date                 ║
--- ║   n   <leader>~       Mark in-progress [~]                    ║
+-- ║   n   <leader>a       Add new item to section                  ║
+-- ║   n   <leader>s       Start item [~]                          ║
+-- ║   n   <leader>d       Mark done [x] + move to DONE            ║
 -- ║   n   <leader><BS>    Uncheck [ ]                             ║
--- ║   n   <leader>a       Add new TODO item to section             ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ OTHER                                                         ║
 -- ║   n   <leader>u       Toggle undotree                         ║
