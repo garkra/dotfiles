@@ -29,6 +29,8 @@ vim.opt.updatetime = 50
 
 vim.opt.mouse = "a"
 
+vim.opt.guicursor = "n-v-c-sm:block-blinkon500,i-ci-ve:ver25,r-cr-o:hor20"
+
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevelstart = 99
