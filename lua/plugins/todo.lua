@@ -43,10 +43,11 @@ local function toggle_todo()
 		todo_buf = vim.fn.bufadd(todo_file)
 		vim.fn.bufload(todo_buf)
 		vim.bo[todo_buf].buflisted = false
+		vim.bo[todo_buf].filetype = "markdown"
 	end
 
 	-- Open a centered floating window
-	local width = math.floor(vim.o.columns * 0.6)
+	local width = math.floor(vim.o.columns * 0.9)
 	local height = math.floor(vim.o.lines * 0.7)
 	todo_win = vim.api.nvim_open_win(todo_buf, true, {
 		relative = "editor",
