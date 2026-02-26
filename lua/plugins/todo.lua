@@ -107,23 +107,62 @@ local function toggle_todo()
 			return
 		end
 
-		-- Find first list item after DONE heading (insert before it)
-		local insert_row = done_row + 1
-		-- Skip blank lines after heading
-		while insert_row <= #lines and lines[insert_row]:match("^%s*$") do
-			insert_row = insert_row + 1
-		end
-
-		-- Remove original lines first, then insert at DONE
+		-- Remove original lines first
 		vim.api.nvim_buf_set_lines(todo_buf, row - 1, last_row, false, {})
-
-		-- Adjust insert position if we removed lines above it
 		local removed = last_row - row + 1
-		if row < insert_row then
-			insert_row = insert_row - removed
+
+		-- Re-read lines after removal and find DONE heading again
+		lines = vim.api.nvim_buf_get_lines(todo_buf, 0, -1, false)
+		done_row = nil
+		for i = 1, #lines do
+			if lines[i]:match("^# DONE:") then
+				done_row = i
+				break
+			end
 		end
 
-		vim.api.nvim_buf_set_lines(todo_buf, insert_row - 1, insert_row - 1, false, item_lines)
+		-- Find or create today's date entry under DONE
+		local today = os.date("%Y-%m-%d")
+		local day_of_week = os.date("%A")
+		local date_row = nil
+		local today_pattern = today:gsub("%-", "%%-")
+		for i = done_row + 1, #lines do
+			if lines[i]:match("^#") then break end
+			if lines[i]:match("^%- " .. today_pattern) then
+				date_row = i
+				break
+			end
+		end
+
+		-- Indent done items as subitems
+		local sub_items = {}
+		for _, l in ipairs(item_lines) do
+			table.insert(sub_items, "  " .. l)
+		end
+
+		if date_row then
+			-- Find last line belonging to this date entry (any indented content)
+			local insert_at = date_row
+			for i = date_row + 1, #lines do
+				if lines[i]:match("^%s+%S") then
+					insert_at = i
+				else
+					break
+				end
+			end
+			vim.api.nvim_buf_set_lines(todo_buf, insert_at, insert_at, false, sub_items)
+		else
+			-- Create new date entry right after DONE heading (skip blank lines)
+			local insert_at = done_row + 1
+			while insert_at <= #lines and lines[insert_at]:match("^%s*$") do
+				insert_at = insert_at + 1
+			end
+			local new_lines = { "- " .. today .. " (" .. day_of_week .. ")" }
+			for _, l in ipairs(sub_items) do
+				table.insert(new_lines, l)
+			end
+			vim.api.nvim_buf_set_lines(todo_buf, insert_at - 1, insert_at - 1, false, new_lines)
+		end
 		vim.api.nvim_win_set_cursor(todo_win, { math.min(row, vim.api.nvim_buf_line_count(todo_buf)), 0 })
 	end, { buffer = todo_buf, desc = "Mark TODO done" })
 
