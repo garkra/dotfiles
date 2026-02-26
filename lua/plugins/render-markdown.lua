@@ -4,7 +4,19 @@ return {
 	dependencies = { "nvim-treesitter/nvim-treesitter" },
 	opts = {
 		render_modes = true,
-		anti_conceal = { enabled = true },
+		anti_conceal = {
+			enabled = true,
+			ignore = {
+				code_background = true,
+				indent = true,
+				sign = true,
+				virtual_lines = true,
+				-- check_icon = true,
+				-- checkbox = true,
+				check_scope = true,
+				-- bullet = true,
+			},
+		},
 		heading = {
 			border = false,
 			backgrounds = {},
