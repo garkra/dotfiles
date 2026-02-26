@@ -35,14 +35,14 @@ brew install --cask kitty
 brew install neovim ripgrep fd fzf lazygit
 ```
 
-| Tool | What it's for |
-|------|---------------|
-| `kitty` | Terminal emulator |
-| `neovim` | The editor itself (0.11.3+ required) |
-| `ripgrep` | Live grep search (Telescope) |
-| `fd` | File finding (Telescope) |
-| `fzf` | Fuzzy matching (telescope-fzf-native) |
-| `lazygit` | Git TUI (opened with `<Space>lg`) |
+| Tool      | What it's for                         |
+| --------- | ------------------------------------- |
+| `kitty`   | Terminal emulator                     |
+| `neovim`  | The editor itself (0.11.3+ required)  |
+| `ripgrep` | Live grep search (Telescope)          |
+| `fd`      | File finding (Telescope)              |
+| `fzf`     | Fuzzy matching (telescope-fzf-native) |
+| `lazygit` | Git TUI (opened with `<Space>lg`)     |
 
 ### Step 4: Configure Git
 
@@ -139,6 +139,7 @@ nvim
 ```
 
 On first launch:
+
 1. **lazy.nvim** will automatically bootstrap and install all plugins
 2. **Mason** will automatically install these LSP servers: `lua_ls`, `ts_ls`, `gopls`, `pyright`, `rust_analyzer`, `eslint`, `clangd`
 3. **Treesitter** will automatically install parsers for: Lua, TypeScript, TSX, JavaScript, Go, Python, Rust, C, C++, vimdoc
@@ -203,138 +204,138 @@ Leader key is `Space`.
 
 ### General
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `jk` | Insert | Exit insert mode |
-| `Space pv` | Normal | Open file explorer (Oil) |
-| `-` | Normal | Open parent directory (Oil) |
-| `J` / `K` | Visual | Move selection down / up |
-| `Ctrl-d` / `Ctrl-u` | Normal | Scroll down / up (centered) |
-| `Space y` | Normal/Visual | Yank to system clipboard |
-| `Space Y` | Normal | Yank line to system clipboard |
-| `Space yf` | Normal | Copy current filepath |
-| `Space p` | Visual | Paste without overwriting register |
-| `Space d` | Normal/Visual | Delete to void register |
-| `Space f` | Normal | Format buffer |
-| `Space u` | Normal | Toggle undo tree |
+| Key                 | Mode          | Action                             |
+| ------------------- | ------------- | ---------------------------------- |
+| `jk`                | Insert        | Exit insert mode                   |
+| `Space pv`          | Normal        | Open file explorer (Oil)           |
+| `-`                 | Normal        | Open parent directory (Oil)        |
+| `J` / `K`           | Visual        | Move selection down / up           |
+| `Ctrl-d` / `Ctrl-u` | Normal        | Scroll down / up (centered)        |
+| `Space y`           | Normal/Visual | Yank to system clipboard           |
+| `Space Y`           | Normal        | Yank line to system clipboard      |
+| `Space yf`          | Normal        | Copy current filepath              |
+| `Space p`           | Visual        | Paste without overwriting register |
+| `Space d`           | Normal/Visual | Delete to void register            |
+| `Space f`           | Normal        | Format buffer                      |
+| `Space u`           | Normal        | Toggle undo tree                   |
 
 ### File Navigation (Telescope)
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `Space pf` | Normal | Find files |
-| `Space gf` | Normal | Find git files |
-| `Space pg` | Normal | Live grep |
-| `Space fb` | Normal | Browse open buffers |
-| `Ctrl-x` | Picker | Open in horizontal split |
-| `Ctrl-v` | Picker | Open in vertical split |
+| Key        | Mode   | Action                   |
+| ---------- | ------ | ------------------------ |
+| `Space pf` | Normal | Find files               |
+| `Space gf` | Normal | Find git files           |
+| `Space pg` | Normal | Live grep                |
+| `Space fb` | Normal | Browse open buffers      |
+| `Ctrl-x`   | Picker | Open in horizontal split |
+| `Ctrl-v`   | Picker | Open in vertical split   |
 
 ### Harpoon (Quick File Switching)
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `Space ha` | Normal | Add file to harpoon |
-| `Space hr` | Normal | Remove file from harpoon |
-| `Ctrl-e` | Normal | Toggle harpoon menu |
+| Key            | Mode   | Action                       |
+| -------------- | ------ | ---------------------------- |
+| `Space ha`     | Normal | Add file to harpoon          |
+| `Space hr`     | Normal | Remove file from harpoon     |
+| `Ctrl-e`       | Normal | Toggle harpoon menu          |
 | `Ctrl-j/k/l/;` | Normal | Jump to harpoon file 1/2/3/4 |
 
 ### LSP
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `gd` | Normal | Go to definition |
-| `K` | Normal | Hover documentation |
-| `Space ca` | Normal | Code action |
-| `Space rr` | Normal | Find references |
-| `Space rn` | Normal | Rename symbol |
-| `Space dd` | Normal | Open diagnostic float |
-| `Space dq` | Normal | Send diagnostics to quickfix |
-| `[d` / `]d` | Normal | Prev / next diagnostic |
-| `Ctrl-h` | Insert | Signature help |
+| Key         | Mode   | Action                       |
+| ----------- | ------ | ---------------------------- |
+| `gd`        | Normal | Go to definition             |
+| `K`         | Normal | Hover documentation          |
+| `Space ca`  | Normal | Code action                  |
+| `Space rr`  | Normal | Find references              |
+| `Space rn`  | Normal | Rename symbol                |
+| `Space dd`  | Normal | Open diagnostic float        |
+| `Space dq`  | Normal | Send diagnostics to quickfix |
+| `[d` / `]d` | Normal | Prev / next diagnostic       |
+| `Ctrl-h`    | Insert | Signature help               |
 
 ### Completion (nvim-cmp)
 
-| Key | Mode | Action |
-|-----|------|--------|
+| Key                 | Mode   | Action                      |
+| ------------------- | ------ | --------------------------- |
 | `Ctrl-n` / `Ctrl-p` | Insert | Next / prev completion item |
-| `Ctrl-Space` | Insert | Trigger completion |
-| `Ctrl-e` | Insert | Abort completion |
-| `Enter` | Insert | Confirm selection |
-| `Tab` | Insert | Accept Copilot suggestion |
+| `Ctrl-Space`        | Insert | Trigger completion          |
+| `Ctrl-e`            | Insert | Abort completion            |
+| `Enter`             | Insert | Confirm selection           |
+| `Tab`               | Insert | Accept Copilot suggestion   |
 
 ### Git
 
-| Key | Mode | Action |
-|-----|------|--------|
+| Key        | Mode   | Action                |
+| ---------- | ------ | --------------------- |
 | `Space gs` | Normal | Git status (Fugitive) |
-| `Space gb` | Normal | Git blame |
-| `Space lg` | Normal | Open lazygit |
+| `Space gb` | Normal | Git blame             |
+| `Space lg` | Normal | Open lazygit          |
 
 ### Flash (Motion)
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `Space s` | Normal | Flash jump |
+| Key                   | Mode   | Action                     |
+| --------------------- | ------ | -------------------------- |
+| `Space s`             | Normal | Flash jump                 |
 | `f` / `F` / `t` / `T` | Normal | Enhanced with flash labels |
-| `/` | Normal | Search with flash labels |
+| `/`                   | Normal | Search with flash labels   |
 
 ### Splits
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `Space sv` | Normal | Vertical split |
-| `Space sh` | Normal | Horizontal split |
-| `Space sx` | Normal | Close split |
-| `Space se` | Normal | Equalize split sizes |
-| `Ctrl-Up/Down` | Normal | Resize vertically |
-| `Ctrl-Left/Right` | Normal | Resize horizontally |
+| Key               | Mode   | Action               |
+| ----------------- | ------ | -------------------- |
+| `Space sv`        | Normal | Vertical split       |
+| `Space sh`        | Normal | Horizontal split     |
+| `Space sx`        | Normal | Close split          |
+| `Space se`        | Normal | Equalize split sizes |
+| `Ctrl-Up/Down`    | Normal | Resize vertically    |
+| `Ctrl-Left/Right` | Normal | Resize horizontally  |
 
 ### Tabs
 
-| Key | Mode | Action |
-|-----|------|--------|
-| `Shift-H` / `Shift-L` | Normal | Prev / next tab |
-| `Space tn` | Normal | New tab |
-| `Space tc` | Normal | Close tab |
-| `Space to` | Normal | Close other tabs |
+| Key                   | Mode   | Action           |
+| --------------------- | ------ | ---------------- |
+| `Shift-H` / `Shift-L` | Normal | Prev / next tab  |
+| `Space tn`            | Normal | New tab          |
+| `Space tc`            | Normal | Close tab        |
+| `Space to`            | Normal | Close other tabs |
 
 ### Kitty Terminal
 
-| Key | Action |
-|-----|--------|
-| `Cmd+D` | Vertical split |
-| `Cmd+Shift+D` | Horizontal split |
-| `Cmd+W` | Close split |
+| Key                 | Action                               |
+| ------------------- | ------------------------------------ |
+| `Cmd+D`             | Vertical split                       |
+| `Cmd+Shift+D`       | Horizontal split                     |
+| `Cmd+W`             | Close split                          |
 | `Cmd+Shift+H/L/K/J` | Navigate splits (left/right/up/down) |
-| `Cmd+Alt+H/L/K/J` | Move split (left/right/up/down) |
-| `Cmd+Shift+Arrow` | Resize split |
-| `Cmd+Shift+]` / `[` | Next / prev tab |
-| `Cmd+1-9` | Go to tab by number |
-| `Cmd+Shift+R` | Rename tab |
+| `Cmd+Alt+H/L/K/J`   | Move split (left/right/up/down)      |
+| `Cmd+Shift+Arrow`   | Resize split                         |
+| `Cmd+Shift+]` / `[` | Next / prev tab                      |
+| `Cmd+1-9`           | Go to tab by number                  |
+| `Cmd+Shift+R`       | Rename tab                           |
 
 ## Plugin List
 
-| Plugin | Purpose |
-|--------|---------|
-| [lazy.nvim](https://github.com/folke/lazy.nvim) | Plugin manager |
-| [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP configuration |
-| [mason.nvim](https://github.com/williamboman/mason.nvim) | LSP/tool installer |
-| [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Autocompletion |
-| [LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Snippet engine |
-| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Fuzzy finder |
-| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting |
-| [conform.nvim](https://github.com/stevearc/conform.nvim) | Code formatting |
-| [copilot.vim](https://github.com/github/copilot.vim) | GitHub Copilot |
-| [harpoon](https://github.com/ThePrimeagen/harpoon) | Quick file navigation |
-| [oil.nvim](https://github.com/stevearc/oil.nvim) | File explorer |
-| [flash.nvim](https://github.com/folke/flash.nvim) | Enhanced motions |
-| [vim-fugitive](https://github.com/tpope/vim-fugitive) | Git integration |
-| [gitsigns.nvim](https://github.com/lewis6458/gitsigns.nvim) | Git gutter signs |
-| [undotree](https://github.com/mbbill/undotree) | Undo history |
-| [which-key.nvim](https://github.com/folke/which-key.nvim) | Keybinding hints |
-| [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | Status line |
-| [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim) | Colorscheme |
-| [everforest-nvim](https://github.com/neanias/everforest-nvim) | Colorscheme (alt) |
+| Plugin                                                                | Purpose               |
+| --------------------------------------------------------------------- | --------------------- |
+| [lazy.nvim](https://github.com/folke/lazy.nvim)                       | Plugin manager        |
+| [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)            | LSP configuration     |
+| [mason.nvim](https://github.com/williamboman/mason.nvim)              | LSP/tool installer    |
+| [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)                       | Autocompletion        |
+| [LuaSnip](https://github.com/L3MON4D3/LuaSnip)                        | Snippet engine        |
+| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)    | Fuzzy finder          |
+| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting   |
+| [conform.nvim](https://github.com/stevearc/conform.nvim)              | Code formatting       |
+| [copilot.vim](https://github.com/github/copilot.vim)                  | GitHub Copilot        |
+| [harpoon](https://github.com/ThePrimeagen/harpoon)                    | Quick file navigation |
+| [oil.nvim](https://github.com/stevearc/oil.nvim)                      | File explorer         |
+| [flash.nvim](https://github.com/folke/flash.nvim)                     | Enhanced motions      |
+| [vim-fugitive](https://github.com/tpope/vim-fugitive)                 | Git integration       |
+| [gitsigns.nvim](https://github.com/lewis6458/gitsigns.nvim)           | Git gutter signs      |
+| [undotree](https://github.com/mbbill/undotree)                        | Undo history          |
+| [which-key.nvim](https://github.com/folke/which-key.nvim)             | Keybinding hints      |
+| [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)          | Status line           |
+| [gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)           | Colorscheme           |
+| [everforest-nvim](https://github.com/neanias/everforest-nvim)         | Colorscheme (alt)     |
 
 ## Troubleshooting
 

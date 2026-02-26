@@ -31,8 +31,13 @@ vim.opt.mouse = "a"
 
 vim.opt.guicursor = "n-v-c-sm:block-blinkon500,i-ci-ve:ver25,r-cr-o:hor20"
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf)
+		vim.wo[0].foldmethod = "expr"
+		vim.wo[0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+	end,
+})
 vim.opt.foldlevelstart = 99
 
 -- When running inside a Neovim terminal (e.g. lazygit), use nvr to open
