@@ -162,6 +162,7 @@ local function toggle_todo()
 			for _, l in ipairs(sub_items) do
 				table.insert(new_lines, l)
 			end
+			table.insert(new_lines, "")
 			vim.api.nvim_buf_set_lines(todo_buf, insert_at - 1, insert_at - 1, false, new_lines)
 		end
 		vim.api.nvim_win_set_cursor(todo_win, { math.min(row, vim.api.nvim_buf_line_count(todo_buf)), 0 })
