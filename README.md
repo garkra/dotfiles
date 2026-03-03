@@ -227,7 +227,7 @@ Leader key is `Space`.
 | `Space pf` | Normal | Find files               |
 | `Space gf` | Normal | Find git files           |
 | `Space pg` | Normal | Live grep                |
-| `Space fb` | Normal | Browse open buffers      |
+| `Space bf` | Normal | Browse open buffers      |
 | `Ctrl-x`   | Picker | Open in horizontal split |
 | `Ctrl-v`   | Picker | Open in vertical split   |
 
@@ -287,9 +287,9 @@ Leader key is `Space`.
 | Key                   | Mode   | Action           |
 | --------------------- | ------ | ---------------- |
 | `Shift-H` / `Shift-L` | Normal | Prev / next tab  |
-| `Space tn`            | Normal | New tab          |
-| `Space tc`            | Normal | Close tab        |
-| `Space to`            | Normal | Close other tabs |
+| `Space bn`            | Normal | New tab          |
+| `Space bc`            | Normal | Close tab        |
+| `Space bo`            | Normal | Close other tabs |
 
 ### Kitty Terminal
 

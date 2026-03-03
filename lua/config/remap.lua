@@ -23,7 +23,7 @@
 -- ║   n   <leader>pf      Find files                              ║
 -- ║   n   <leader>gf      Find git files                          ║
 -- ║   n   <leader>pg      Live grep                               ║
--- ║   n   <leader>fb      Browse open buffers                     ║
+-- ║   n   <leader>bf      Browse open buffers                     ║
 -- ║   n   <C-e>           Recent files (oldfiles)                 ║
 -- ║   *   <C-x>           Open in horizontal split (in picker)    ║
 -- ║   *   <C-v>           Open in vertical split (in picker)      ║
@@ -70,9 +70,9 @@
 -- ║ TABS (remap.lua)                                              ║
 -- ║   n   Shift+H           Prev tab                              ║
 -- ║   n   Shift+L           Next tab                              ║
--- ║   n   <leader>tn        New tab                               ║
--- ║   n   <leader>tc        Close tab                             ║
--- ║   n   <leader>to        Close other tabs                      ║
+-- ║   n   <leader>bn        New tab                               ║
+-- ║   n   <leader>bc        Close tab                             ║
+-- ║   n   <leader>bo        Close other tabs                      ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ TODO (plugins/todo.lua) — buffer-local to TODO float            ║
 -- ║   n   <leader>td      Toggle floating TODO                    ║
@@ -138,6 +138,6 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Resize
 
 vim.keymap.set("n", "<S-h>", "<cmd>tabprevious<CR>", { desc = "Prev tab" })
 vim.keymap.set("n", "<S-l>", "<cmd>tabnext<CR>", { desc = "Next tab" })
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
-vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "Close tab" })
-vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>", { desc = "Close other tabs" })
+vim.keymap.set("n", "<leader>bn", "<cmd>tabnew<CR>", { desc = "New tab" })
+vim.keymap.set("n", "<leader>bc", "<cmd>tabclose<CR>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader>bo", "<cmd>tabonly<CR>", { desc = "Close other tabs" })
