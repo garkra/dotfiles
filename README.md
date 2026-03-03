@@ -312,6 +312,7 @@ Leader key is `Space`.
 | `Cmd+Shift+]` / `[` | Next / prev tab                      |
 | `Cmd+1-9`           | Go to tab by number                  |
 | `Cmd+Shift+R`       | Rename tab                           |
+| `Cmd+Shift+F`       | Toggle focus mode (zoom split)       |
 
 ## Plugin List
 
