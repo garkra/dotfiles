@@ -24,15 +24,9 @@
 -- ║   n   <leader>gf      Find git files                          ║
 -- ║   n   <leader>pg      Live grep                               ║
 -- ║   n   <leader>fb      Browse open buffers                     ║
+-- ║   n   <C-e>           Recent files (oldfiles)                 ║
 -- ║   *   <C-x>           Open in horizontal split (in picker)    ║
 -- ║   *   <C-v>           Open in vertical split (in picker)      ║
--- ╠═══════════════════════════════════════════════════════════════╣
--- ║ HARPOON (plugins/harpoon.lua)                                 ║
--- ║   n   <leader>ha      Add file to harpoon                     ║
--- ║   n   <leader>hr      Remove file from harpoon                ║
--- ║   n   <C-e>           Toggle harpoon menu (telescope)         ║
--- ║   n   <C-j/k/l/;>     Select harpoon file 1/2/3/4             ║
--- ║   n   <C-S-J/K>       Harpoon prev/next                       ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ LSP (plugins/lsp.lua)                                         ║
 -- ║   n   gd              Go to definition                        ║
