@@ -223,21 +223,13 @@ Leader key is `Space`.
 
 | Key        | Mode   | Action                   |
 | ---------- | ------ | ------------------------ |
+| `Ctrl-e`   | Normal | Recent files             |
 | `Space pf` | Normal | Find files               |
 | `Space gf` | Normal | Find git files           |
 | `Space pg` | Normal | Live grep                |
 | `Space fb` | Normal | Browse open buffers      |
 | `Ctrl-x`   | Picker | Open in horizontal split |
 | `Ctrl-v`   | Picker | Open in vertical split   |
-
-### Harpoon (Quick File Switching)
-
-| Key            | Mode   | Action                       |
-| -------------- | ------ | ---------------------------- |
-| `Space ha`     | Normal | Add file to harpoon          |
-| `Space hr`     | Normal | Remove file from harpoon     |
-| `Ctrl-e`       | Normal | Toggle harpoon menu          |
-| `Ctrl-j/k/l/;` | Normal | Jump to harpoon file 1/2/3/4 |
 
 ### LSP
 
@@ -327,7 +319,6 @@ Leader key is `Space`.
 | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting   |
 | [conform.nvim](https://github.com/stevearc/conform.nvim)              | Code formatting       |
 | [copilot.vim](https://github.com/github/copilot.vim)                  | GitHub Copilot        |
-| [harpoon](https://github.com/ThePrimeagen/harpoon)                    | Quick file navigation |
 | [oil.nvim](https://github.com/stevearc/oil.nvim)                      | File explorer         |
 | [flash.nvim](https://github.com/folke/flash.nvim)                     | Enhanced motions      |
 | [vim-fugitive](https://github.com/tpope/vim-fugitive)                 | Git integration       |
