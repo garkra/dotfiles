@@ -146,7 +146,21 @@ On first launch:
 
 Wait for everything to finish installing (you'll see progress in the status area), then restart Neovim.
 
-### Step 12: Set Up GitHub Copilot
+### Step 12: Install Formatters and Linters
+
+Mason auto-installs LSP servers, but formatters and linters need a one-time manual install:
+
+```
+:MasonInstall prettierd eslint_d oxlint
+```
+
+| Tool       | What it's for                                      |
+| ---------- | -------------------------------------------------- |
+| `prettierd`  | Code formatting on save (via conform)             |
+| `eslint_d`  | Fast eslint auto-fix on save (via conform)         |
+| `oxlint`    | Fast additional linting diagnostics (via nvim-lint) |
+
+### Step 13: Set Up GitHub Copilot
 
 On first use, Copilot will prompt you to authenticate:
 
@@ -194,7 +208,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo apt install build-essential
 ```
 
-Then run `:Copilot setup` inside Neovim to authenticate GitHub Copilot.
+Then inside Neovim, install formatters/linters and authenticate Copilot:
+
+```
+:MasonInstall prettierd eslint_d oxlint
+:Copilot setup
+```
 
 ---
 
@@ -318,6 +337,7 @@ Leader key is `Space`.
 | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)    | Fuzzy finder          |
 | [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting   |
 | [conform.nvim](https://github.com/stevearc/conform.nvim)              | Code formatting       |
+| [nvim-lint](https://github.com/mfussenegger/nvim-lint)                | Linting               |
 | [copilot.vim](https://github.com/github/copilot.vim)                  | GitHub Copilot        |
 | [oil.nvim](https://github.com/stevearc/oil.nvim)                      | File explorer         |
 | [flash.nvim](https://github.com/folke/flash.nvim)                     | Enhanced motions      |
