@@ -26,10 +26,23 @@ return {
 			},
 		})
 
-		vim.lsp.enable({ "lua_ls", "ts_ls", "gopls", "pyright", "rust_analyzer", "eslint", "clangd" })
+		vim.lsp.enable({ "lua_ls", "ts_ls", "gopls", "pyright", "rust_analyzer", "eslint", "oxlint", "clangd" })
+
+		vim.diagnostic.config({
+			float = { source = true },
+		})
 
 		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			callback = function(ev)
+				local clients = vim.lsp.get_clients({ bufnr = ev.buf, name = "eslint" })
+				if #clients > 0 then
+					vim.cmd("silent! EslintFixAll")
+				end
+			end,
+		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(ev)

@@ -13,10 +13,10 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			typescript = { "eslint_d", "oxfmt" },
-			typescriptreact = { "eslint_d", "oxfmt" },
-			javascript = { "eslint_d", "oxfmt" },
-			javascriptreact = { "eslint_d", "oxfmt" },
+			typescript = { "oxfmt" },
+			typescriptreact = { "oxfmt" },
+			javascript = { "oxfmt" },
+			javascriptreact = { "oxfmt" },
 			json = { "oxfmt" },
 			jsonc = { "oxfmt" },
 			markdown = { "oxfmt" },
@@ -30,7 +30,7 @@ return {
 			cpp = { "clang-format" },
 		},
 format_on_save = {
-			timeout_ms = 10000,
+			timeout_ms = 3000,
 			lsp_format = "fallback",
 		},
 	},
