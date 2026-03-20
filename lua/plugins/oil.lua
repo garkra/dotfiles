@@ -8,6 +8,18 @@ return {
 	},
 	opts = {
 		default_file_explorer = true,
+		keymaps = {
+			["<leader>yf"] = {
+				callback = function()
+					local dir = require("oil").get_current_dir()
+					if dir then
+						vim.fn.setreg("+", dir)
+						vim.notify(dir, vim.log.levels.INFO)
+					end
+				end,
+				desc = "Copy current directory path",
+			},
+		},
 		view_options = {
 			show_hidden = true,
 		},
