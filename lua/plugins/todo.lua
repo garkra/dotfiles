@@ -170,10 +170,11 @@ end
 local function all_children_done(lines, parent_row)
 	local first, last = get_children_range(lines, parent_row)
 	if not first then return true end
-	local parent_indent = (lines[parent_row]:match("^(%s*)") or ""):len()
+	-- Detect actual child indent from first child rather than assuming +2
+	local child_indent = (lines[first]:match("^(%s*)") or ""):len()
 	for i = first, last do
 		local indent = (lines[i]:match("^(%s*)") or ""):len()
-		if indent == parent_indent + 2 then
+		if indent == child_indent then
 			local p = parse_line(lines[i])
 			if p and p.state ~= "x" and p.state ~= "X" then return false end
 		end
