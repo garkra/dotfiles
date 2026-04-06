@@ -8,24 +8,6 @@ return {
 		sections = {
 			lualine_c = {
 				"filename",
-				{
-					function()
-						local text = vim.g.todo_active_text
-						if not text or text == "" then return "" end
-						local prior = vim.g.todo_active_prior_min or 0
-						local seg_elapsed = math.floor((os.time() - (vim.g.todo_active_start or os.time())) / 60)
-						local total = prior + seg_elapsed
-						local h = math.floor(total / 60)
-						local m = total % 60
-						local dur = h > 0 and string.format("%dh%02dm", h, m) or string.format("%dm", m)
-						local max_len = 40
-						if #text > max_len then text = text:sub(1, max_len) .. "…" end
-						return "⏱ " .. dur .. " " .. text
-					end,
-					cond = function()
-						return vim.g.todo_active_text and vim.g.todo_active_text ~= ""
-					end,
-				},
 			},
 		},
 		tabline = {
