@@ -32,9 +32,6 @@ return {
 			float = { source = true },
 		})
 
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
-
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			callback = function(ev)
 				local clients = vim.lsp.get_clients({ bufnr = ev.buf, name = "eslint" })
@@ -50,15 +47,15 @@ return {
 					return { buffer = ev.buf, remap = false, desc = desc }
 				end
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("Hover documentation"))
+				vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "single" }) end, opts("Hover documentation"))
 				vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts("Workspace symbol search"))
 				vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, opts("Open diagnostic float"))
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts("Code action"))
 				vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts("Find references"))
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename symbol"))
-				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts("Prev diagnostic"))
-				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
-				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts("Signature help"))
+				vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, opts("Prev diagnostic"))
+				vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, opts("Next diagnostic"))
+				vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help({ border = "single" }) end, opts("Signature help"))
 			end,
 		})
 	end,
