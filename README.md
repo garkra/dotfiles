@@ -238,6 +238,34 @@ Leader key is `Space`.
 | `Space f`           | Normal        | Format buffer                      |
 | `Space u`           | Normal        | Toggle undo tree                   |
 
+### Task Management (TODO)
+
+A built-in task manager (`lua/plugins/todo.lua`, stored in `~/.todo.md`). Five
+sections — **Today → This Week → Backlog → Blocked → Done** — and three states:
+`[ ]` to-do, `[!]` blocked, `[x]` done. Completed tasks move to Done under the day's
+ISO date; day-groups older than 30 days roll into `~/.todo-archive.md` automatically.
+Group subtasks under a plain-bullet header; finishing a child files it under Done
+tagged with the group name. `Space l` logs end-of-day progress on the task under
+your cursor into Done (carrying its link), so unfinished work still shows in your
+daily record. `Space ts` asks for a timeframe and writes a `claude`-generated prose
+summary of your completed work (float or `~/.todo-summaries.md`).
+
+| Key        | Mode   | Action                                |
+| ---------- | ------ | ------------------------------------- |
+| `Space td` | Normal | Toggle the TODO float                 |
+| `Space ta` | Normal | Open the archive                      |
+| `Space ts` | Normal | AI summary of completed work (claude) |
+| `q`        | Float  | Close (saves first)                   |
+| `Space d`  | Float  | Mark task done → Done (today)         |
+| `Space b`  | Float  | Toggle blocked                        |
+| `Space p`  | Float  | Promote (Backlog → This Week → Today) |
+| `Space m`  | Float  | Log a meeting into Done               |
+| `Space l`  | Float  | Log progress on the task under cursor into Done (links it back) |
+| `Space a`  | Float  | Add a sibling task                    |
+| `Space n`  | Float  | Add a note bullet                     |
+
+Move tasks between sections with native vim (`dd` / `p`); delete with `dd`.
+
 ### File Navigation (Telescope)
 
 | Key        | Mode   | Action                   |

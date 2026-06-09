@@ -74,16 +74,19 @@
 -- ║   n   <leader>bc        Close tab                             ║
 -- ║   n   <leader>bo        Close other tabs                      ║
 -- ╠═══════════════════════════════════════════════════════════════╣
--- ║ TODO (plugins/todo.lua) — buffer-local to TODO float            ║
--- ║   n   <leader>td      Toggle floating TODO                    ║
--- ║   n   q               Close TODO (saves first)                ║
--- ║   n   <leader>s       Start/pause item [~]/[=]                ║
--- ║   n   <leader>d       Mark done [x] + track in DONE           ║
--- ║   n   <leader>b       Toggle blocked [!]                      ║
--- ║   n   <leader>n       Add note bullet                         ║
--- ║   n   <leader>a       Add sibling item                        ║
--- ║   n   <leader>c       Add child item                          ║
--- ║   n   <leader><BS>    Reset item [ ]                          ║
+-- ║ TODO (plugins/todo.lua)                                       ║
+-- ║   n   <leader>td     Toggle floating TODO                     ║
+-- ║   n   <leader>ta     Open archive                             ║
+-- ║   n   <leader>ts     AI summary (claude)                      ║
+-- ║   in the TODO float:                                          ║
+-- ║   n   q              Close (saves first)                      ║
+-- ║   n   <leader>d      Mark done -> DONE (today)                ║
+-- ║   n   <leader>b      Toggle blocked [!]                       ║
+-- ║   n   <leader>p      Promote (Backlog->Week->Today)           ║
+-- ║   n   <leader>m      Log a meeting -> DONE                    ║
+-- ║   n   <leader>l      Log progress -> DONE                     ║
+-- ║   n   <leader>a      Add sibling task                         ║
+-- ║   n   <leader>n      Add note bullet                          ║
 -- ╠═══════════════════════════════════════════════════════════════╣
 -- ║ OTHER                                                         ║
 -- ║   n   <leader>u       Toggle undotree                         ║
