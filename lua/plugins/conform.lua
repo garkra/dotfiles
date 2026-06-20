@@ -5,7 +5,9 @@ return {
 		{
 			"<leader>f",
 			function()
-				require("conform").format()
+				-- Fall back to LSP formatting when no external formatter (e.g.
+				-- oxfmt) is installed, matching format_on_save behavior.
+				require("conform").format({ lsp_format = "fallback" })
 			end,
 			desc = "Format buffer",
 		},
