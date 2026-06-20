@@ -68,13 +68,11 @@ The Neovim config automatically detects `nvr` and uses it when running inside a 
 
 ### Step 6: Install a Nerd Font
 
-A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status line and file explorer.
+A [Nerd Font](https://www.nerdfonts.com/) is required for icons in the status line and file explorer. The Kitty config (`kitty/kitty.conf`) is set to use **Iosevka Nerd Font Mono**, so install that exact font — otherwise Kitty silently falls back to a default font and looks wrong:
 
 ```bash
-brew install --cask font-fira-code-nerd-font
+brew install --cask font-iosevka-nerd-font
 ```
-
-Kitty is already configured to use this font (see Step 9).
 
 ### Step 7: Install Language Toolchains (as needed)
 
@@ -123,6 +121,14 @@ The repo includes a Kitty config. Symlink it so Kitty picks it up:
 mkdir -p ~/.config/kitty
 ln -sf ~/.config/nvim/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ```
+
+`kitty.conf` ends with `include current-theme.conf`, which is **not** tracked in the repo — the theme is generated per-machine. Generate it now, or Kitty falls back to default colors:
+
+```bash
+kitty +kitten themes --reload-in=none "Gruvbox Dark Hard"
+```
+
+This writes `~/.config/kitty/current-theme.conf` (the colorscheme the `include` line expects).
 
 ### Step 10: Create the Undo Directory
 
@@ -380,6 +386,7 @@ Move tasks between sections with native vim (`dd` / `p`); delete with `dd`.
 ## Troubleshooting
 
 - **Icons look broken**: Make sure your terminal is using a Nerd Font
+- **Kitty ignores your config / wrong font or colors**: The config loads two things that aren't bundled with the repo. Install the font (`brew install --cask font-iosevka-nerd-font`) and generate the theme (`kitty +kitten themes "Gruvbox Dark Hard"`) — see Steps 6 and 9. Confirm the symlink resolves: `readlink ~/.config/kitty/kitty.conf`
 - **Telescope grep not working**: Make sure `ripgrep` is installed (`brew install ripgrep` / `sudo apt install ripgrep`)
 - **LSP not starting**: Check `:Mason` to see if the server is installed. Make sure the language toolchain is installed (e.g., `node` for TypeScript)
 - **Copilot not working**: Run `:Copilot setup` and authenticate with GitHub

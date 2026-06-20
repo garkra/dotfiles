@@ -171,18 +171,18 @@ echo ""
 
 # ─── Nerd Font ─────────────────────────────────────────────────────────
 
-color "1" "--- FiraCode Nerd Font ---"
-FONT_DIR="$HOME/.local/share/fonts/FiraCode"
-if fc-list | grep -qi "FiraCode.*Nerd"; then
-    ok "FiraCode Nerd Font already installed"
+color "1" "--- Iosevka Nerd Font ---"
+FONT_DIR="$HOME/.local/share/fonts/Iosevka"
+if fc-list | grep -qi "Iosevka.*Nerd"; then
+    ok "Iosevka Nerd Font already installed"
 else
-    info "Downloading FiraCode Nerd Font..."
+    info "Downloading Iosevka Nerd Font..."
     mkdir -p "$FONT_DIR"
-    curl -Lo /tmp/FiraCode.tar.xz "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz"
-    tar xf /tmp/FiraCode.tar.xz -C "$FONT_DIR"
-    rm -f /tmp/FiraCode.tar.xz
+    curl -Lo /tmp/Iosevka.tar.xz "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Iosevka.tar.xz"
+    tar xf /tmp/Iosevka.tar.xz -C "$FONT_DIR"
+    rm -f /tmp/Iosevka.tar.xz
     fc-cache -f
-    ok "FiraCode Nerd Font installed"
+    ok "Iosevka Nerd Font installed"
 fi
 echo ""
 
@@ -214,6 +214,16 @@ color "1" "--- Symlinks & directories ---"
 mkdir -p ~/.config/kitty
 ln -sf ~/.config/nvim/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ok "Linked kitty.conf"
+
+# kitty.conf does `include current-theme.conf`, which isn't tracked in the repo
+# (it's generated per-machine). Without it, Kitty falls back to default colors.
+if [ -f ~/.config/kitty/current-theme.conf ]; then
+    ok "Kitty theme already generated"
+elif command -v kitty &>/dev/null; then
+    kitty +kitten themes --reload-in=none "Gruvbox Dark Hard" \
+        && ok "Generated Kitty theme (Gruvbox Dark Hard)" \
+        || warn "Could not generate Kitty theme — run: kitty +kitten themes \"Gruvbox Dark Hard\""
+fi
 
 mkdir -p ~/.config/lazygit
 ln -sf ~/.config/nvim/lazygit/config.yml ~/.config/lazygit/config.yml
