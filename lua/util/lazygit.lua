@@ -43,6 +43,17 @@ function M.kill()
 	M.buf = nil
 end
 
+-- Keep the float (and therefore the terminal inside it) sized to the editor
+-- whenever the Neovim window is resized; otherwise lazygit never redraws.
+vim.api.nvim_create_autocmd("VimResized", {
+	group = vim.api.nvim_create_augroup("lazygit_resize", { clear = true }),
+	callback = function()
+		if M.win and vim.api.nvim_win_is_valid(M.win) then
+			vim.api.nvim_win_set_config(M.win, win_opts())
+		end
+	end,
+})
+
 -- Launch a fresh lazygit in a floating terminal.
 function M.open()
 	M.kill()
