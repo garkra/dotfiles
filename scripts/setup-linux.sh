@@ -186,19 +186,6 @@ else
 fi
 echo ""
 
-# ─── neovim-remote ─────────────────────────────────────────────────────
-
-color "1" "--- neovim-remote ---"
-if command -v nvr &>/dev/null; then
-    ok "nvr already installed"
-else
-    info "Installing neovim-remote..."
-    pip3 install --user --break-system-packages neovim-remote 2>/dev/null \
-        || pip3 install --user neovim-remote
-    ok "neovim-remote installed"
-fi
-echo ""
-
 # ─── Shell config ──────────────────────────────────────────────────────
 
 color "1" "--- Shell config ($SHELL_RC) ---"

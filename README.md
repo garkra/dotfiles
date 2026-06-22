@@ -55,16 +55,15 @@ git config --global user.email "your.email@example.com"
 
 ### Step 5: Set Default Editor
 
-Set Neovim as your default editor and install `neovim-remote` so lazygit can open files in your existing Neovim instance:
+Set Neovim as your default editor:
 
 ```bash
 echo 'export EDITOR="nvim"' >> ~/.zshrc
 echo 'export VISUAL="nvim"' >> ~/.zshrc
 source ~/.zshrc
-pip3 install neovim-remote
 ```
 
-The Neovim config automatically detects `nvr` and uses it when running inside a Neovim terminal (like lazygit), so files open in a split in your current editor instead of nesting a new one.
+When lazygit (or any program running inside a Neovim terminal) opens a file with `e`, [flatten.nvim](https://github.com/willothy/flatten.nvim) intercepts it and opens it as a buffer in your existing Neovim session instead of nesting a new instance — then closes the lazygit float. It only needs `$EDITOR` to be `nvim` (set above); no extra tooling required.
 
 ### Step 6: Install a Nerd Font
 
@@ -193,7 +192,7 @@ git clone https://github.com/garkra/dotfiles.git ~/.config/nvim
 ~/.config/nvim/scripts/setup-linux.sh
 ```
 
-The script installs all dependencies (Neovim, Kitty, ripgrep, fd, fzf, lazygit, Nerd Font, neovim-remote), configures your shell, and symlinks the Kitty config. After it finishes, open Kitty and run `nvim` — plugins will auto-install on first launch.
+The script installs all dependencies (Neovim, Kitty, ripgrep, fd, fzf, lazygit, Nerd Font), configures your shell, and symlinks the Kitty config. After it finishes, open Kitty and run `nvim` — plugins will auto-install on first launch.
 
 For language toolchains, install whichever you need:
 
@@ -376,6 +375,7 @@ Move tasks between sections with native vim (`dd` / `p`); delete with `dd`.
 | [oil.nvim](https://github.com/stevearc/oil.nvim)                      | File explorer         |
 | [flash.nvim](https://github.com/folke/flash.nvim)                     | Enhanced motions      |
 | [vim-fugitive](https://github.com/tpope/vim-fugitive)                 | Git integration       |
+| [flatten.nvim](https://github.com/willothy/flatten.nvim)              | Open terminal-spawned files in this session |
 | [gitsigns.nvim](https://github.com/lewis6458/gitsigns.nvim)           | Git gutter signs      |
 | [undotree](https://github.com/mbbill/undotree)                        | Undo history          |
 | [which-key.nvim](https://github.com/folke/which-key.nvim)             | Keybinding hints      |
