@@ -1,2 +1,45 @@
-os:
-  editPreset: "nvim-remote"
+# Single source of truth for lazygit config, symlinked from both locations
+# lazygit may resolve (~/Library/Application Support/lazygit and
+# ~/.config/lazygit). Edits from lazygit's `e` are handled by flatten.nvim via
+# $EDITOR=nvim, so no editPreset is needed here.
+gui:
+  border: rounded
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --syntax-theme gruvbox-dark
+customCommands:
+  - key: "W"
+    context: "worktrees"
+    description: "New feature worktree + kitty tab"
+    prompts:
+      - type: "input"
+        title: "Feature name (creates branch gk/<name>)"
+        key: "Name"
+    command: "wt {{.Form.Name}}"
+    output: log
+  - key: "W"
+    context: "localBranches"
+    description: "Worktree from this branch + kitty tab"
+    prompts:
+      - type: "input"
+        title: "Feature name (empty = worktree for this branch)"
+        key: "Name"
+    command: "wt '{{.Form.Name}}' '{{.SelectedLocalBranch.Name}}'"
+    output: log
+  - key: "D"
+    context: "worktrees"
+    description: "Remove worktree + close its kitty tab"
+    prompts:
+      - type: "menu"
+        title: "Remove {{.SelectedWorktree.Path}}?"
+        key: "Force"
+        options:
+          - name: "Remove"
+            description: "Refuses if the worktree has uncommitted changes"
+            value: ""
+          - name: "Force remove"
+            description: "DISCARDS uncommitted and untracked files"
+            value: "--force"
+    command: "wt-rm '{{.SelectedWorktree.Path}}' {{.Form.Force}}"
+    output: log
