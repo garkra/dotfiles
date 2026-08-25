@@ -4,6 +4,7 @@
 # $EDITOR=nvim, so no editPreset is needed here.
 gui:
   border: rounded
+  scrollHeight: 1
 git:
   pagers:
     - colorArg: always

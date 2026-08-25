@@ -30,6 +30,7 @@ vim.opt.updatetime = 50
 -- vim.opt.clipboard = "unnamedplus"
 
 vim.opt.mouse = "a"
+vim.opt.mousescroll = "ver:1,hor:0"
 
 vim.opt.guicursor = "n-v-c-sm:block-blinkon500,i-ci-ve:ver25,r-cr-o:hor20"
 
